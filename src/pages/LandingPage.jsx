@@ -3,10 +3,23 @@ import { Link } from 'react-router-dom';
 const LandingPage = () => {
   return (
     <div className="relative h-screen overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-green-900 opacity-90"></div>
+      {/* Video Background */}
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        className="absolute z-0 w-full h-full object-cover"
+      >
+        <source src="/assets/background.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black opacity-50 z-1"></div>
+      
+      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white p-4 text-center">
-        <h1 className="text-5xl font-bold mb-6 animate-fade-in">Welcome to MindEcho</h1>
+        <h1 className="text-5xl font-bold mb-6">Welcome to MindEcho</h1>
         <p className="text-xl mb-8 max-w-2xl">
           Your personal AI-powered mental wellness companion
         </p>

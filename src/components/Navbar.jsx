@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import { FaBrain, FaHome, FaCommentAlt, FaBook, FaSignInAlt, FaUserPlus,FaSignOutAlt,FaRobot} from 'react-icons/fa';
+import { FaBrain, FaHome, FaCommentAlt, FaBook, FaSignInAlt, FaUserPlus, FaSignOutAlt,FaRobot
+} from 'react-icons/fa';
+
 const Navbar = ({ user, logout }) => {
   return (
     <nav className="bg-green-700 text-white p-4 shadow-lg">
@@ -50,3 +52,6 @@ const Navbar = ({ user, logout }) => {
       </div>
     </nav>
   );
+};
+
+export default Navbar;
