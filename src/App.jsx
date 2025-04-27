@@ -1,49 +1,64 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import AffirmationsPage from './pages/AffirmationsPage';
-import ChatPage from './pages/ChatPage';
 import JournalPage from './pages/JournalPage';
+import ChatPage from './pages/ChatPage';
 import Navbar from './components/Navbar';
-import { useState } from 'react';
 
 function App() {
+  const [user, setUser] = useState(null);
   const [affirmations, setAffirmations] = useState([]);
   const [journalEntries, setJournalEntries] = useState([]);
 
-  const addAffirmation = (newAffirmation) => {
-    setAffirmations([...affirmations, newAffirmation]);
-  };
-
-  const addJournalEntry = (newEntry) => {
-    setJournalEntries([...journalEntries, newEntry]);
-  };
+  const login = (userData) => setUser(userData);
+  const logout = () => setUser(null);
 
   return (
     <Router>
       <ToastContainer />
-      <Navbar />
+      <Navbar user={user} logout={logout} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route 
+          path="/login" 
+          element={user ? <Navigate to="/home" /> : <LoginPage login={login} />} 
+        />
+        <Route 
           path="/home" 
           element={
-            <HomePage 
-              addAffirmation={addAffirmation} 
-              addJournalEntry={addJournalEntry} 
-            />
+            user ? (
+              <HomePage 
+                addAffirmation={(aff) => setAffirmations([...affirmations, aff])}
+                addJournalEntry={(entry) => setJournalEntries([...journalEntries, entry])}
+              />
+            ) : <Navigate to="/login" />
           } 
         />
         <Route 
           path="/affirmations" 
-          element={<AffirmationsPage affirmations={affirmations} />} 
+          element={
+            user ? <AffirmationsPage affirmations={affirmations} /> : <Navigate to="/login" />
+          } 
         />
-        <Route path="/chat" element={<ChatPage />} />
         <Route 
           path="/journal" 
-          element={<JournalPage entries={journalEntries} />} 
+          element={
+            user ? (
+              <JournalPage 
+                entries={journalEntries}
+                addJournalEntry={(entry) => setJournalEntries([...journalEntries, entry])}
+              />
+            ) : <Navigate to="/login" />
+          } 
+        />
+        <Route 
+          path="/chat" 
+          element={user ? <ChatPage /> : <Navigate to="/login" />} 
         />
       </Routes>
     </Router>

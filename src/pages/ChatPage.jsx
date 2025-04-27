@@ -1,3 +1,4 @@
+
 import AIChat from '../components/AIChat';
 
 const ChatPage = () => {
@@ -6,6 +7,7 @@ const ChatPage = () => {
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden h-[calc(100vh-8rem)]">
         <div className="p-4 bg-green-700 text-white">
           <h1 className="text-xl font-bold">AI Mental Health Assistant</h1>
+          <p className="text-sm">Share your thoughts and get supportive responses</p>
         </div>
         <AIChat />
       </div>
