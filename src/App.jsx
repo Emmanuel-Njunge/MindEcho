@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import AffirmationsPage from './pages/AffirmationsPage';
 import JournalPage from './pages/JournalPage';
@@ -24,10 +25,18 @@ function App() {
       <Navbar user={user} logout={logout} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        
+        {/* Authentication Routes */}
         <Route 
           path="/login" 
           element={user ? <Navigate to="/home" /> : <LoginPage login={login} />} 
         />
+        <Route 
+          path="/signup" 
+          element={user ? <Navigate to="/home" /> : <SignUpPage login={login} />} 
+        />
+        
+        {/* Protected Routes */}
         <Route 
           path="/home" 
           element={
@@ -41,9 +50,7 @@ function App() {
         />
         <Route 
           path="/affirmations" 
-          element={
-            user ? <AffirmationsPage affirmations={affirmations} /> : <Navigate to="/login" />
-          } 
+          element={user ? <AffirmationsPage affirmations={affirmations} /> : <Navigate to="/login" />} 
         />
         <Route 
           path="/journal" 
