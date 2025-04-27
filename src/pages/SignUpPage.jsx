@@ -24,8 +24,7 @@ const SignUpPage = ({ login }) => {
       alert("Passwords don't match!");
       return;
     }
-    
-    // In a real app, you would send this to your backend
+  
     login({ 
       name: formData.name,
       email: formData.email 

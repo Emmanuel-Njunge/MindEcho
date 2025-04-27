@@ -40,10 +40,10 @@ const AIChat = () => {
       }
 
       setMessages(prev => [...prev, { text: response, sender: 'ai' }]);
-    }, 500); // Simulate slight delay
+    }, 500); 
   };
 
-  // Auto-scroll to bottom
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);

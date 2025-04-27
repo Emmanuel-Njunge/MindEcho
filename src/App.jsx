@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import {BrowserRouter as Router,Routes,Route,Navigate,} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LandingPage from "./pages/LandingPage";
@@ -31,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
 
-        {/* Authentication Routes */}
+     
         <Route
           path="/login"
           element={user ? <Navigate to="/home" /> : <LoginPage login={login} />}
@@ -43,7 +38,6 @@ function App() {
           }
         />
 
-        {/* Protected Routes */}
         <Route
           path="/home"
           element={
