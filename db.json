@@ -1,0 +1,29 @@
+{
+    "affirmations": [
+      {
+        "id": 1,
+        "mood": "Anxious",
+        "message": "Take a deep breath, you are doing better than you think.",
+        "date": "2025-04-22",
+        "source": "AI Chatbot",
+        "shared": false,
+        "userId": 1
+      }
+    ],
+    "journalEntries": [
+      {
+        "id": 1,
+        "title": "My First Entry",
+        "content": "Today was a good day...",
+        "date": "2025-04-22",
+        "userId": 1
+      }
+    ],
+    "users": [
+      {
+        "id": 1,
+        "username": "testuser",
+        "password": "password123"
+      }
+    ]
+  }
